@@ -9,7 +9,7 @@ from picamera import PiCamera
 from time import sleep
 
 live = PiCamera()
-camera.rotation = 180
+live.rotation = 180
 
 live.start_preview()
 sleep(5)
