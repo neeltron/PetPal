@@ -13,9 +13,7 @@ live.rotation = 180
 
 live.start_preview()
 sleep(5)
-i = 1
 
 while True:
-    i = i + 1
-    live.capture('liveimage' + str(i) + '.jpg')
+    live.capture('liveimage.jpg')
     sleep(10)
