@@ -17,5 +17,5 @@ i = 1
 
 while True:
     i = i + 1
-    live.capture('liveimage' + i + '.jpg')
+    live.capture('liveimage' + str(i) + '.jpg')
     sleep(10)
