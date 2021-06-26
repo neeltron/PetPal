@@ -9,7 +9,13 @@ from picamera import PiCamera
 from time import sleep
 
 live = PiCamera()
+camera.rotation(180)
 
 live.start_preview()
 sleep(5)
-live.stop_preview()
+i = 1
+
+while True:
+    i = i + 1
+    live.capture('liveimage' + i + '.jpg')
+    sleep(10)
