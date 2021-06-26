@@ -9,14 +9,17 @@ from picamera import PiCamera
 from time import sleep
 import base64
 import requests
+import Adafruit_DHT
 
 live = PiCamera()
 live.rotation = 180
 
 live.start_preview()
-sleep(5)
+sleep(5)    
 
 while True:
+    humidity, temperature = Adafruit_DHT.read_retry(11, 4)
+    print(humidity, temperature)
     live.capture('liveimage.jpg')
     sleep(10)
     with open("liveimage.jpg", "rb") as file:
