@@ -11,8 +11,14 @@ void setup() {
 void loop() {
   int chk = DHT.read(2);
   Serial.println(DHT.temperature);
-  S1.write(90);
-  delay(1000);
-  S1.write(0);
-  delay(1000);
+  int servo = Serial.read();
+  if (servo == 65) {
+    S1.write(90);
+  }
+  if(servo == 66) {
+    S1.write(45);
+  }
+  if(servo == 67) {
+    S1.write(135);
+  }
 }
