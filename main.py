@@ -9,11 +9,18 @@ import cv2
 from time import sleep
 import base64
 import requests
+import serial
+
+temperature = serial.Serial('COM5')
+temperature.flushInput()
 
 cam = cv2.VideoCapture(0)
 
 while True:
     try:
+        temp = temperature.readline()
+        decoded = float(temp[0:len(temp)-2].decode("utf-8"))
+        print(decoded)
         ret, frame = cam.read()
         cv2.imshow('frame', frame)
         cv2.imwrite("liveimage.jpg", frame)
