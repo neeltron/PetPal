@@ -11,6 +11,15 @@ import base64
 import requests
 import serial
 
+
+
+def getRequest(temp, url):
+    print(requests.get("https://PetPalAPI.neeltron.repl.co/input_hardware?temp=" + str(temp) + "&url=" + url))
+    response = requests.get('https://PetPalAPI.neeltron.repl.co/output_hardware')
+    print(response)
+    
+
+
 temperature = serial.Serial('COM5')
 temperature.flushInput()
 
@@ -34,5 +43,7 @@ while True:
                 res = requests.post(url, payload)
                 dict = res.json()
                 url = dict['data']['url']
+                getRequest(decoded, url)
+            
     except:
         print("error")
